@@ -29,4 +29,7 @@ public class Item {
 	return name;
     }
     
+    public void itemDetails(){
+	System.out.print("This is "+name+".  "+description+"\n");
+    }
 }

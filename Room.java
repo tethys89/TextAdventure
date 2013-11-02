@@ -93,4 +93,8 @@ public class Room {
     }
     System.out.print("\n");
     }
+
+    void roomDetails() {
+	System.out.print("You are standing in the "+roomName+".  "+roomDesc+"\nIt contains "+roomInventory+"\n");
+    }
 }

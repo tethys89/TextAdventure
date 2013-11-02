@@ -129,9 +129,8 @@ public class RPG {
 		if (count == 0) {
 		    System.out.print("I'm sorry, I can't go that way.\n");
 		}
-	    }
-	    //</editor-fold>
-
+	    } //</editor-fold>
+	    //<editor-fold defaultstate="collapsed" desc="PICK UP">
 	    else if (orderList.contains("TAKE") || orderList.contains("PICK")) {
 		//counter for picked up items
 		int count = 0;
@@ -141,7 +140,7 @@ public class RPG {
 		    String[] itemName = i.getName().toUpperCase().split(" ");
 		    //loop over the words in the item name
 		    for (String s : itemName) {
-			//test if the word in the item name is contained in the order
+			//test if the word in the item name is contained in the command
 			//(ignore 'a', 'the' etc?)
 			if (orderList.contains(s) && !s.equals("A") && !s.equals("THE")) {
 			    Avatar.pickUpItem(i.getName(), currentLoc);
@@ -151,20 +150,21 @@ public class RPG {
 			}
 		    }
 		}
-		if (count == 0){System.out.print("I'm sorry I can't pick that up\n");}
-	    }
-	    
-	    else if(orderList.contains("LEAVE") || orderList.contains("DROP") || orderList.contains("PUT")){
-		
-		//counter for picked up items
+		if (count == 0) {
+		    System.out.print("I'm sorry I can't pick that up\n");
+		}
+	    } //</editor-fold>
+	    //<editor-fold defaultstate="collapsed" desc="PUT DOWN">
+	    else if (orderList.contains("LEAVE") || orderList.contains("DROP") || orderList.contains("PUT")) {
+		//counter for put down items
 		int count = 0;
-		//loop over items in the room
+		//loop over items in character's inventory
 		for (Item i : Avatar.getInvent()) {
 		    //split the item name into string[]
 		    String[] itemName = i.getName().toUpperCase().split(" ");
 		    //loop over the words in the item name
 		    for (String s : itemName) {
-			//test if the word in the item name is contained in the order
+			//test if the word in the item name is contained in the command
 			//(ignore 'a', 'the' etc?)
 			if (orderList.contains(s) && !s.equals("A") && !s.equals("THE")) {
 			    Avatar.putDownItem(i.getName(), currentLoc);
@@ -174,15 +174,43 @@ public class RPG {
 			}
 		    }
 		}
-		if (count == 0){System.out.print("I'm sorry I can't put that down\n");}
-	    }
-
-		if (orderList.contains("QUIT")) {
-		    System.exit(0);
+		if (count == 0) {
+		    System.out.print("I'm sorry I can't put that down\n");
 		}
-		//</editor-fold>
+	    } //</editor-fold>
+	    //<editor-fold defaultstate="collapsed" desc="DESCRIBE">
+	    else if (orderList.contains("EXAMINE") || orderList.contains("DESCRIBE")) {
+		String[] roomArr = currentLoc.getName().split(" ");
+		if (orderList.contains(roomArr[0]) || orderList.contains("ROOM")) {
+		    currentLoc.roomDetails();
+		} else {
+		    //		    int count = 0;
+		    for (Item i : currentLoc.getInvent()) {
+			//split the item name into string[]
+			String[] itemName = i.getName().toUpperCase().split(" ");
+			//loop over the words in the item name
+			for (String s : itemName) {
+			    //test if the word in the item name is contained in the command
+			    //(ignore 'a', 'the' etc?)
+			    if (orderList.contains(s) && !s.equals("A") && !s.equals("THE")) {
+				i.itemDetails();
+				//				count++;
+				break;
+			    }
+			}
+		    }
+		}
 	    }
+	    //</editor-fold>
+	    //<editor-fold defaultstate="collapsed" desc="QUIT">
+	    if (orderList.contains("QUIT")) {
+		System.exit(0);
+	    }
+	    //</editor-fold>
 
-
+	    //</editor-fold>
 	}
+
+
     }
+}
