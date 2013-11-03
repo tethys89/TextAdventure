@@ -210,7 +210,20 @@ public class RPG {
 
 	    //</editor-fold>
 	}
+    }
 
-
+    public ArrayList<Room> createWorld() {
+	ArrayList<Room> world = new ArrayList<>();
+	BufferedReader br = null;
+ 		try {
+ 			String sCurrentLine;
+ 			br = new BufferedReader(new FileReader("C:\\Users\\Madaxe\\Documents\\NetBeansProjects\\TextAdventure\\src"));
+ 			while ((sCurrentLine = br.readLine()) != null) {
+				System.out.println(sCurrentLine);
+			} 
+		} catch (IOException e) {
+			e.printStackTrace();} 
+		
+	return world;
     }
 }
