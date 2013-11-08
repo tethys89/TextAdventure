@@ -1,0 +1,21 @@
+Entrance Hall
+It is an entrance hall of a very grand house
+a fruit bowl | The fruit bowl contains some fruit
+a clock | Tick Tock
+1 | Lounge
+4 | Dining
+
+Kitchen
+This is a very large kitchen.
+a stove | The stove is very hot
+3 | Dining
+
+Dining Room
+This dining room is set for 12 people
+a knife | The knife is blunt
+3 | Hall
+4 | Kitchen
+
+Lounge
+The Lounge is a mess, and there are blood spatters on the wall
+2 | Hall

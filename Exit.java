@@ -53,7 +53,7 @@ public class Exit {
 
 //<editor-fold defaultstate="collapsed" desc="member variables">
         // Member variables
-        private Room m_leadsTo = null;
+        private String m_leadsTo = null;
         private int m_direction;
         
         // Full name of direction eg SOUTHEAST
@@ -72,7 +72,7 @@ public class Exit {
 	}
 
 	// Full constructor
-	public Exit( int direction, Room leadsTo ){
+	public Exit( int direction, String leadsTo ){
 		m_direction = direction;
 
 		// Assign direction names
@@ -95,29 +95,25 @@ public class Exit {
 	public void setDirectionName( String dirname ){
 		m_directionName = dirname;
 	}
+	// Assigns short direction name
+	public void setShortDirectionName( String shortName ){
+		m_shortDirectionName = shortName;
+	}
+	// Assigns location
+	public void setLeadsTo( String leadsTo ){
+		m_leadsTo = leadsTo;
+	}
 
 	// Returns direction name
 	public String getDirectionName(){
 		return m_directionName;
 	}
-
-	// Assigns short direction name
-	public void setShortDirectionName( String shortName ){
-		m_shortDirectionName = shortName;
-	}
-
 	// Returns short direction name
 	public String getShortDirectionName(){
 		return m_shortDirectionName;
 	}
-
-	// Assigns location
-	public void setLeadsTo( Room leadsTo ){
-		m_leadsTo = leadsTo;
-	}
-
 	// Returns location
-	public Room getLeadsTo(){
+	public String getLeadsTo(){
 		return m_leadsTo;
 	}
 

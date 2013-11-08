@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Room {
+public class Room implements Cloneable {
     
     private String roomName;
     private String roomDesc;
@@ -43,13 +43,26 @@ public class Room {
         roomExits = exits;
     }
     
-    
+    public Room(Room room){
+	Room newRoom = new Room();
+	newRoom.setName(room.getName());
+	newRoom.setDesc(room.getDesc());
+	newRoom.setInvent(room.getInvent());
+	newRoom.setExits(room.getExits());
+	//return newRoom;
+    }
+    //empty constructor
+    public Room(){
+    }
     //methods
     
     public String toString() {
 	return roomName;
     }
     
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
     //add an exit to the room
     public void addExit (Exit exit){
         roomExits.add(exit);
@@ -86,7 +99,7 @@ public class Room {
     public void printExits() {
 	System.out.print("This room has exits to the: ");
 	for (int i=0; i<roomExits.size();i++){
-	    System.out.print(roomExits.get(i).getDirectionName());
+	    System.out.print(roomExits.get(i).getDirectionName() + " (" +roomExits.get(i).getLeadsTo()+ ")");
 	    if (i<roomExits.size()-1){
 		System.out.print(", ");
 	    }
