@@ -49,11 +49,13 @@ public class Room implements Cloneable {
 	newRoom.setDesc(room.getDesc());
 	newRoom.setInvent(room.getInvent());
 	newRoom.setExits(room.getExits());
-	//return newRoom;
+//	return newRoom;
     }
+    
     //empty constructor
     public Room(){
     }
+    
     //methods
     
     public String toString() {
@@ -87,14 +89,19 @@ public class Room implements Cloneable {
     
     public void printInventory(){
 	System.out.print("This room contains: ");
-	for (int i=0; i<roomInventory.size();i++){
-	    System.out.print(roomInventory.get(i).getName());
-	    if (i<roomInventory.size()-1){
-		System.out.print(", ");
-	    }
+	if (roomInventory.size() > 0){
+		for (int i=0; i<roomInventory.size();i++){
+		    System.out.print(roomInventory.get(i).getName());
+		    if (i<roomInventory.size()-1){
+			System.out.print(", ");
+		    }
+		}
+    	}
+    	else { System.out.print("nothing");
+    	}
+    	System.out.print("\n");
     }
-    System.out.print("\n");
-    }
+    
     
     public void printExits() {
 	System.out.print("This room has exits to the: ");
@@ -103,7 +110,7 @@ public class Room implements Cloneable {
 	    if (i<roomExits.size()-1){
 		System.out.print(", ");
 	    }
-    }
+    	}
     System.out.print("\n");
     }
 
